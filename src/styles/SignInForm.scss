@@ -1,0 +1,68 @@
+
+.bg-cover {
+  background-image: url("../assets/images/new-web-login.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+
+.brand-logo {
+  width: 175px;
+  height: 60px;
+  background-image: url("../assets/images/taxiBookAI.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin: 0 auto 1rem;
+}
+
+
+.btn-login {
+  background-color: #68d830;
+  border-color: #40cf2a;
+  color: white;
+  cursor: pointer;
+}
+
+.btn-login:hover {
+  background-color: #389e20;
+  border-color: #4c9c1e;
+  color: white;
+}
+
+.login-box {
+  max-width: 350px;
+  width: 100%;
+}
+
+.forgot-password {
+  .forgot-password-form {
+    box-shadow: 0 2px 4px 1px rgba(0, 0, 0, .5);
+    height: 32em;
+    width: -webkit-fill-available;
+    border-radius: 15px;
+  }
+
+  .forgot-password-btn:disabled {
+    background-color: #838383;
+    color: #FFFFFF;
+    cursor: not-allowed;
+  }
+
+  .fa-arrow-left {
+    font-size: 13px;
+    color: #333;
+    cursor: pointer;
+  }
+
+  .fa-eye {
+    bottom: 10.3em;
+    right: 33px;
+    cursor: pointer;
+  }
+
+  .fa-eye1 {
+    bottom: 4.9em;
+  }
+}

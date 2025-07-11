@@ -1,0 +1,15 @@
+
+.gradient-text {
+  background: $gradient-text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+  font-weight: bold;
+}
+.text-red {
+  color: $red-500;
+}
+
+.primary-color {
+  color: $primary-color;
+}

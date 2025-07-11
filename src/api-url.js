@@ -1,0 +1,17 @@
+window.PUBLIC_API = {
+    SSO_API_URL: 'https://eumbrdevcloud.ddswireless.net//dpapi',
+    EMAIL_SERVICE_API: 'EMAIL_SERVICE_API',
+    API_UI_URL: 'https://eumbrdevcloud.ddswireless.net//dpapi',
+    REPORT_API_URL: 'https://eumbrdevreport.ddswireless.net:3013/report',
+    S3_BUCKET_4_DRIVER_SLIP:'taxiiqqadocuments.ddswireless.net',
+    RATING_API_URL: 'https://eumbrdevcloud.ddswireless.net//driver',
+    DRIVER_SERVICE_URL: 'https://eumbrdevcloud.ddswireless.net//driver',
+    SHOW_RATINGS: 'Y',
+    DATE_FORMAT_METHOD: 'UI_DATE_FORMAT_METHOD',
+    VERSION_NUMBER: '3.7.4',
+    HOS_SUPPORTED_DISPATCH_AREA:'99,83',
+    CLEARANCE_SUPPORTED_DISPATCH_AREA: '99,83',
+    VEHICLE_INSPECTION_API_URL: 'https://eumbrdevcloud.ddswireless.net//vehicle',
+    VEHICLE_INSPECTION_SUPPORTED_DISPATCH_AREA: '99,83',
+    ZONE_SUPPORTED_DISPATCH_AREA: 'UI_ZONE_SUPPORTED_DISPATCH_AREA',
+};
