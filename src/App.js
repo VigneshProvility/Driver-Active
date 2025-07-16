@@ -9,7 +9,10 @@ import ForgotPassword from "./components/login/forgotPassword";
 import SignUP from "./components/login/sign-up";
 import VerifySignUp from "./components/login/VerifySignUp";
 import ForgotPasswordVerify from "./components/login/forgot-password-verify";
-import Home from "./components/home/home";
+import SidebarMenuWithHeader from "./components/sidebar-menu-with-header";
+import Home from "./components/home";
+import Report from "./components/report";
+import TripReport from "./components/report/list/trip-sheet";
 
 import {AuthProvider} from "./contexts/auth-context";
 import ProtectedRoute from "./protected-route";
@@ -41,18 +44,21 @@ function App() {
                         <Route path="/forgot-password-verify" element={<ForgotPasswordVerify />} />
 
                         {/* Protected route */}
-                        <Route path="/home-page"
+                        <Route path="/"
                             element={
                                 <ProtectedRoute>
-                                    <Home />
+                                    <SidebarMenuWithHeader />
                                 </ProtectedRoute>
-                            }/>
+                            }>
+                            <Route index path={"home-page"} element={<Home />}></Route>
+                            <Route path={"report"} element={<Report />}></Route>
+                            <Route path={"trip-sheet-report"} element={<TripReport />}></Route>
+                        </Route>
                     </Routes>
                 </Router>
             </AuthProvider>
         </>
-    )
-        ;
+    );
 }
 
 export default App;
