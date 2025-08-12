@@ -1,0 +1,9 @@
+node_modules/
+package-lock.json
+
+# Remove from Git tracking, but keep files locally
+git rm -r --cached node_modules
+git rm --cached package-lock.json
+
+# Commit the removal
+git commit -m "Remove node_modules and package-lock.json from tracking"
