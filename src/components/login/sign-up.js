@@ -3,9 +3,6 @@ import {Link, useNavigate} from 'react-router-dom';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import {toast} from "react-toastify";
 
-
-
-
 export default function SignUP() {
 
     const [email, setEmail] = useState("");
@@ -19,11 +16,8 @@ export default function SignUP() {
 
     function signUpClick(e) {
         e.preventDefault();
-        toast.success('Success', {
-            onClose: () => {
-                navigate('/login');
-            }
-        });
+        toast.success('Success');
+        navigate('/login');
     }
 
 

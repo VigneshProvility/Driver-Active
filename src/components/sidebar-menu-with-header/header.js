@@ -1,12 +1,12 @@
-import {FaStar} from "react-icons/fa";
+import {FaStar, FaBars} from "react-icons/fa";
 import React from "react";
 
 
-function Header() {
+function Header({collapseMenu}) {
     return <>
         <header className="custom-header">
             <div className="header-left">
-                {/* Optionally put sidebar toggle here */}
+                <FaBars className={'mobile-menu'}  onClick={collapseMenu}/>
             </div>
 
             <div className="header-center">
@@ -19,16 +19,16 @@ function Header() {
                 <div className="profile-box">
                     <img src="https://via.placeholder.com/32" alt="profile" className="profile-img"/>
                     <div className="rating-box">
-                        <span>0</span>
+                        <span>1</span>
                         <FaStar className="star-icon"/>
                         {[...Array(4)].map((_, index) => (
                             <FaStar key={index} className="star-icon empty"/>
                         ))}
                     </div>
-                    <div className="datetime-box">
-                        <div>{1223}</div>
-                        <div>{'tue'}</div>
-                    </div>
+                    {/*<div className="datetime-box">*/}
+                    {/*    <div>{1223}</div>*/}
+                    {/*    <div>{'tue'}</div>*/}
+                    {/*</div>*/}
                 </div>
             </div>
         </header>
