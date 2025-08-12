@@ -19,8 +19,8 @@ const initialMenu = (() => {
 })();
 
 
-function SidebarMenu() {
-    const [collapsed, setCollapsed] = useState(false);
+function SidebarMenu(props) {
+    const {isCollapsed, collapseMenu} = props
     const [activeMenu, setActiveMenu] = useState(initialMenu);
     const navigate = useNavigate();
 
@@ -31,14 +31,14 @@ function SidebarMenu() {
 
     return (
         <>
-            <aside className={`sidebar ${!collapsed ? "collapsed" : ""}`}>
+            <aside className={`sidebar ${!isCollapsed ? "collapsed" : ""}`}>
                 {/* Top */}
                 <div className="sidebar__top">
-                    <h2 className="sidebar__logo">{collapsed && "Driver Portal"}</h2>
+                    <h2 className="sidebar__logo">{isCollapsed && "Driver Portal"}</h2>
                     <button
                         className="sidebar__collapse-btn"
-                        onClick={() => setCollapsed(!collapsed)}>
-                        {!collapsed ? <FaChevronRight/> : <FaChevronLeft/>}
+                        onClick={() => collapseMenu(!isCollapsed)}>
+                        {!isCollapsed ? <FaChevronRight/> : <FaChevronLeft/>}
                     </button>
                 </div>
 
@@ -65,14 +65,14 @@ function SidebarMenu() {
                 <div className="sidebar__bottom">
                     <div className="sidebar__lang">
                         <FaGlobe/>
-                        {collapsed && <span>English</span>}
+                        {isCollapsed && <span>English</span>}
                     </div>
                     <div data-tooltip-id={`sign-out`} data-tooltip-content={"Sign Out"} className="sidebar__logout">
                         <FaPowerOff/>
-                        {collapsed && <span>Sign Out</span>}
+                        {isCollapsed && <span>Sign Out</span>}
                         <Tooltip id={`sign-out`} place="right" />
                     </div>
-                    <div className="sidebar__version">{!collapsed ? '3.7.4' : 'Version 3.7.4'}</div>
+                    <div className="sidebar__version">{!isCollapsed ? '3.7.4' : 'Version 3.7.4'}</div>
                 </div>
             </aside>
         </>
