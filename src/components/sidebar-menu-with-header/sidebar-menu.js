@@ -10,9 +10,18 @@ import { Tooltip } from 'react-tooltip';
 
 import {MENU_LIST} from "../../util/menu-list";
 
+const initialMenu = (() => {
+    const path = window.location.pathname.toLowerCase();
+    const menuInfo = MENU_LIST.find((menu) =>
+        path.includes(menu.title.toLowerCase())
+    );
+    return menuInfo ? menuInfo.title : "home";
+})();
+
+
 function SidebarMenu() {
     const [collapsed, setCollapsed] = useState(false);
-    const [activeMenu, setActiveMenu] = useState('home');
+    const [activeMenu, setActiveMenu] = useState(initialMenu);
     const navigate = useNavigate();
 
     function onMenuChange(menuInfo) {

@@ -3,11 +3,16 @@
   justify-content: space-between;
   align-items: center;
   background: #ffffff;
-  padding: 2.2rem 2rem;
+  padding: 2.2rem 5rem;
   border-bottom: 1px solid #e5e5e5;
+  width: auto;
+
 
   .header-left {
     flex: 1;
+    .mobile-menu {
+      display: none;
+    }
   }
 
   .header-center {
@@ -71,6 +76,38 @@
         line-height: 1.2;
         color: #333;
       }
+    }
+  }
+}
+
+/* For tablets and smaller */
+@media (max-width: 765px) {
+  .custom-header {
+    padding: 2.2rem 0.5rem;
+    .header-left {
+      flex: 0;
+      .mobile-menu {
+        display: flex;
+        font-size: 25px;
+        color: #030014;
+      }
+    }
+    .header-center {
+      margin-left: 3em;
+
+    }
+  }
+  .custom-header .header-center .logo-text {
+    font-size: 1.6rem;
+  }
+
+  .custom-header .header-right .profile-box {
+    .profile-img {
+      width: 25px;
+      height: 25px;
+    }
+    .rating-box {
+      font-size: 0.4rem;
     }
   }
 }

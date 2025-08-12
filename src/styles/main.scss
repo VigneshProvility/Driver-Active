@@ -1,13 +1,17 @@
 @import './variables';
 @import './mixins.scss';
 @import "~bootstrap/scss/bootstrap";
+
 @import "react-datepicker/dist/react-datepicker.css";
 
-
-@import "./SignInForm";
-@import "./sidebar-menu";
-@import "./header";
-@import "./report";
+@import "components/SignInForm";
+@import "components/sidebar-menu";
+@import "components/header";
+@import "components/report";
+@import "components/trip-sheet";
+@import "components/loader";
+@import "components/controls/mui-table";
+@import "components/controls/date-pickr";
 
 * {
   margin: 0;
@@ -20,4 +24,8 @@ html, body {
   background: #030014;
   color: $primary-color;
   height: 100%;
+}
+
+.react-tooltip {
+  z-index: 1000;
 }
