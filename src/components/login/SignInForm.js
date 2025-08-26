@@ -1,17 +1,19 @@
 import React, {useState} from "react";
 import {Link, useNavigate} from 'react-router-dom';
 import {toast} from "react-toastify";
+import {useDispatch} from "react-redux";
 import {getAuthCredentials} from "../../util/login";
 import {setUserCrendIntoLocalStorage} from "../../services/local-storage";
 import {useAuth} from "../../contexts/auth-context";
 import Loader from "../loader";
-
+import {AUTH_REDUCER_INFO} from "../../util/reducer";
 
 export default function SignInForm() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const authorized = useAuth()
     const [loading, setLoading] = useState(false);
+    const dispatch = useDispatch();
 
     const navigate = useNavigate();
 
@@ -28,6 +30,7 @@ export default function SignInForm() {
             setLoading(true);
             const userCred = await getAuthCredentials(email, password);
             setUserCrendIntoLocalStorage(userCred);
+            dispatch({type: AUTH_REDUCER_INFO.LOGIN, payload: userCred});
             authorized.login(userCred);
             navigate('/home-page');
             toast.success('Success', {

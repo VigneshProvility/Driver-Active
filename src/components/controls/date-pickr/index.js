@@ -1,22 +1,20 @@
 import {FaArrowLeft, FaArrowRight, FaCalendarAlt} from "react-icons/fa";
 import DatePicker from "react-datepicker";
 import React, {forwardRef} from "react";
+import moment from "moment";
 
 export default function DatePickr(props) {
 
     const goToPreviousDay = () => {
         props.setSelectedDate((prev) => {
-            const newDate = new Date(prev);
-            newDate.setDate(prev.getDate() - 1);
-            return newDate;
+            return moment(prev).subtract(1, 'days');
         });
     };
 
     const goToNextDay = () => {
         props.setSelectedDate((prev) => {
-            const tomorrow = new Date(prev);
-            tomorrow.setDate(prev.getDate() + 1);
-            if (tomorrow > new Date()) return prev;
+            const tomorrow = moment(prev).add(1, 'days');
+            if (tomorrow > moment()) return prev;
             return tomorrow;
         });
     };
