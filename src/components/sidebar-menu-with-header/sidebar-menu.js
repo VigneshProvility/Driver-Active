@@ -9,6 +9,7 @@ import {useNavigate} from "react-router-dom";
 import { Tooltip } from 'react-tooltip';
 
 import {MENU_LIST} from "../../util/menu-list";
+import {useAuth} from "../../contexts/auth-context";
 
 const initialMenu = (() => {
     const path = window.location.pathname.toLowerCase();
@@ -23,6 +24,7 @@ function SidebarMenu(props) {
     const {isCollapsed, collapseMenu} = props
     const [activeMenu, setActiveMenu] = useState(initialMenu);
     const navigate = useNavigate();
+    const {logout} = useAuth();
 
     function onMenuChange(menuInfo) {
         setActiveMenu(menuInfo.title);
@@ -67,7 +69,7 @@ function SidebarMenu(props) {
                         <FaGlobe/>
                         {isCollapsed && <span>English</span>}
                     </div>
-                    <div data-tooltip-id={`sign-out`} data-tooltip-content={"Sign Out"} className="sidebar__logout">
+                    <div data-tooltip-id={`sign-out`} data-tooltip-content={"Sign Out"} className="sidebar__logout" onClick={() => logout()}>
                         <FaPowerOff/>
                         {isCollapsed && <span>Sign Out</span>}
                         <Tooltip id={`sign-out`} place="right" />
