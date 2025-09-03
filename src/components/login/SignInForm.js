@@ -7,6 +7,7 @@ import {setUserCrendIntoLocalStorage} from "../../services/local-storage";
 import {useAuth} from "../../contexts/auth-context";
 import Loader from "../loader";
 import {AUTH_REDUCER_INFO} from "../../util/reducer";
+import {initProfileInfo} from "../../services/driver-workspace";
 
 export default function SignInForm() {
     const [email, setEmail] = useState("");
@@ -33,6 +34,7 @@ export default function SignInForm() {
             dispatch({type: AUTH_REDUCER_INFO.LOGIN, payload: userCred});
             authorized.login(userCred);
             navigate('/home-page');
+            await initProfileInfo();
             toast.success('Success', {
                 onClose: () => {
                     setEmail('');

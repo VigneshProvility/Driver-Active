@@ -1,5 +1,6 @@
 import {FaStar, FaBars} from "react-icons/fa";
 import React from "react";
+import {Rating} from "@mui/material";
 
 
 function Header({collapseMenu}) {
@@ -20,10 +21,7 @@ function Header({collapseMenu}) {
                     <img src="https://via.placeholder.com/32" alt="profile" className="profile-img"/>
                     <div className="rating-box">
                         <span>1</span>
-                        <FaStar className="star-icon"/>
-                        {[...Array(4)].map((_, index) => (
-                            <FaStar key={index} className="star-icon empty"/>
-                        ))}
+                        <Rating name="rating" value={3.4} precision={0.1}/>
                     </div>
                     {/*<div className="datetime-box">*/}
                     {/*    <div>{1223}</div>*/}

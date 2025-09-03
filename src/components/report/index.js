@@ -10,7 +10,7 @@ const REPORT_LIST = [
     },
     {
         title: 'Vehicle Owner Sheet',
-        link: ''
+        link: '/vehicle-owner-sheet-report',
     },
 ];
 

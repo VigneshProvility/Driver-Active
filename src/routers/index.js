@@ -18,6 +18,8 @@ import SidebarMenuWithHeader from "../components/sidebar-menu-with-header";
 import Home from "../components/home";
 import Report from "../components/report";
 import TripReport from "../components/report/list/trip-sheet";
+import VehicleOwnerSheet from "../components/report/list/vehicle-owner-sheet";
+import Profile from "../components/profile";
 
 import '../language-selection';
 
@@ -56,6 +58,8 @@ function Routers() {
                                 <Route index path="home-page" element={<Home />} />
                                 <Route path="report" element={<Report />} />
                                 <Route path="trip-sheet-report" element={<TripReport />} />
+                                <Route path="vehicle-owner-sheet-report" element={<VehicleOwnerSheet />} />
+                                <Route path="profile" element={<Profile />} />
                             </Route>
                         </Routes>
                     </Router>
