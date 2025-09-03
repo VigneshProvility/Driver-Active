@@ -1,18 +1,28 @@
-import { createStore } from "redux";
-import {persistReducer, persistStore} from "redux-persist";
+// store.js
+import { createStore, compose } from "redux";
+import { persistReducer, persistStore } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 
 import rootReducer from "./combine-reducer";
 
+// persist configuration
 const persistConfig = {
     key: "root",
-    storage
+    storage,
 };
 
+// wrap root reducer with persist
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
-//used to manage the state
-export const store = createStore(persistedReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+// safe enhancer setup for Redux DevTools
+const composeEnhancers =
+    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-// used to retained state while browser reloads
+// create store
+export const store = createStore(
+    persistedReducer,
+    composeEnhancers()
+);
+
+// create persistor (to retain state on reloads)
 export const persistor = persistStore(store);

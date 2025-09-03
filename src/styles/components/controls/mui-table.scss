@@ -5,8 +5,10 @@ $font-color: #FFFFFF;
   .MuiDataGrid-topContainer {
     color: $font-color;
 
-    .MuiDataGrid-filler {
-      background: $background-color;
+    .MuiDataGrid-columnHeaders {
+      .MuiDataGrid-filler {
+        background: $background-color;
+      }
     }
 
     .MuiDataGrid-columnHeaders {
@@ -14,6 +16,7 @@ $font-color: #FFFFFF;
         .MuiDataGrid-columnHeader--sortable {
           background: $font-color;
         }
+
         .MuiDataGrid-columnHeader {
           background: $background-color;
 
@@ -27,6 +30,7 @@ $font-color: #FFFFFF;
               }
             }
           }
+
           .MuiSvgIcon-root {
             color: $font-color;
           }

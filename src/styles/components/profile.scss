@@ -1,0 +1,143 @@
+
+.profile-container {
+  background: #ffffff;
+  border-bottom: 1px solid #e5e5e5;
+  color: black;
+  padding: 1em 1em 0 1em;
+  margin: 1.5em 5em 0 0.5em;
+  border-radius: 0.8em;
+  .profile-header {
+    border-bottom: 1px solid #e5e5e5;
+    font-weight: 700;
+    font-size: 1.5em;
+  }
+  .profile-content {
+    font-style: normal;
+    border-bottom: 1px solid #e5e5e5;
+    font-weight: 600;
+    font-size: 1.1em;
+    line-height: 20px;
+    margin-top: 5px;
+    align-items: center;
+    color: #303E44;
+    .profile-value {
+      display: flex;
+    }
+    .star-icon {
+      color: #facc15;
+    }
+    .empty {
+      color: rgba(0,0,0,.06)
+    }
+    .profile-description {
+      justify-content: space-between;
+      word-break: break-word;   /* ✅ forces break inside long words/emails */
+      overflow-wrap: anywhere;  /* ✅ newer browsers support */
+      white-space: normal;      /* ✅ allow wrapping */
+      max-width: 100%;
+    }
+  }
+  .suspension-table {
+    height: 400px;
+  }
+}
+
+.profile-padding {
+  padding: 1em 1em 3em 1em;
+}
+
+.password-change-container {
+  background: #ffffff;
+  color: black;
+  padding: 1em 1em 0 1em;
+  margin: 1.5em 5em 0 0.5em;
+  border-radius: 0.8em;
+  .profile-header {
+    font-weight: 700;
+    font-size: 1.5em;
+  }
+  .password-description {
+    color: #6d7580;
+    font-size: 14px;
+  }
+  .password-group {
+    position: relative;
+    .password-field {
+      width: 67em;
+      height: 4.2em;
+      border-radius: 10px;
+      border: 2px solid #dadee3;
+      margin-left: 4em;
+      font-weight: 700;
+      font-size: 14px;
+      outline: none;
+    }
+    .password-field:focus {
+      border:  2px solid #21a423;
+      box-shadow: 0 2px 4px 0 #ccced6;
+
+    }
+    .password-sub-header {
+      margin-left: 6em;
+      font-size: 15px;
+      font-weight: 600;
+    }
+    .eye-icon {
+      bottom: 6px;
+      right: 67em;
+    }
+  }
+  .update-btn {
+    align-content: center;
+    height: 3em;
+    width: 75em;
+    border-radius: 10px;
+    background: #21a423;
+    border: #21a423;
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
+  }
+  .cancel-btn {
+    background-color: #FFFFFF;
+    color: Red;
+    border: #FFFFFF;
+
+  }
+  .password-validation-error {
+    margin-left: 5em;
+  }
+  .update-btn:disabled {
+    cursor: none;
+    background: #9098a1;
+  }
+}
+
+@media screen and (max-width: 765px) {
+  .profile-container {
+    margin: 0.5em 1em 0 0.5em;
+  }
+  .password-change-container {
+    margin: 1.5em 1em 0 0.5em;
+    .password-group {
+      .password-field {
+        width: 24em;
+        height: 4.2em;
+        margin-left: 1em;
+      }
+      .password-sub-header {
+        margin-left: 3em;
+      }
+      .eye-icon {
+        right: 2em;
+      }
+    }
+    .update-btn {
+      height: 3em;
+      width: 19em;
+    }
+    .password-validation-error {
+      margin-left: 2em;
+    }
+  }
+}

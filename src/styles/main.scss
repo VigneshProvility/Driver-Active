@@ -10,6 +10,8 @@
 @import "components/report";
 @import "components/trip-sheet";
 @import "components/loader";
+@import "components/profile";
+
 @import "components/controls/mui-table";
 @import "components/controls/date-pickr";
 
@@ -24,6 +26,11 @@ html, body {
   background: #030014;
   color: $primary-color;
   height: 100%;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;   /* ❌ disable horizontal scroll */
+  overflow-y: auto;     /* ✅ allow vertical scroll */
 }
 
 .react-tooltip {

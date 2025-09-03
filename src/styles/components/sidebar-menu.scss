@@ -106,6 +106,9 @@
 .dashboard_content {
   background-color: #f5f5f5;
   overflow-x: scroll;
+  transition: none;
+  margin-left: 0;
+  width: 100%;
 
   h1 {
     color: #333;

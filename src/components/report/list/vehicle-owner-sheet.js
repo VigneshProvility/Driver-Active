@@ -8,14 +8,15 @@ import MUITable from "../../controls/mui-table";
 import DatePickr from "../../controls/date-pickr";
 import {downloadCSV} from "../../../util/file-download";
 import {getApi} from "../../../util/fetch-api";
-import {COLUMN_LIST, FOOTER_LIST} from "../../../services/trip-sheet";
+import {COLUMN_LIST} from "../../../services/trip-sheet";
+import {convertDateFormat} from "../../../util/common";
 
 const CAN_SHOW_FR_BCK_BTN = {
-    forward: true,
-    backward: true
+    forward: false,
+    backward: false
 }
 
-const TITLE = 'trip-sheet-report';
+const TITLE = 'vehicle-owner-sheet-report';
 
 function downloadTripSheet(tripList) {
     const data = {
@@ -25,16 +26,17 @@ function downloadTripSheet(tripList) {
     return downloadCSV(data, TITLE);
 }
 
-function TripSheet() {
-    const [selectedDate, setSelectedDate] = useState(moment());
+function VehicleOwnerSheet() {
+    const [startDate, setStartDate] = useState(moment());
+    const [endDate, setEndDate] = useState(moment());
     const [tripList, setTripList] = useState([]);
     const navigate = useNavigate();
 
 
     function fetchTripList() {
-        const startDate = moment().format('YYYY-MM-DDTHH:mm:ss');
-        const endDate = moment(selectedDate).add(1, 'days').format('YYYY-MM-DDTHH:mm:ss');
-        const url = `https://eumbrdevcloud.ddswireless.net/dpapi/driver/464/route-query?startTime=${startDate}&endTime=${endDate}`;
+        const startDates = convertDateFormat(startDate,'YYYY-MM-DDTHH:mm:ss');
+        const endDates = convertDateFormat(endDate,'YYYY-MM-DDTHH:mm:ss');
+        const url = `https://eumbrdevcloud.ddswireless.net/dpapi/driver/464/route-query?startTime=${startDates}&endTime=${endDates}`;
         return getApi(url, false);
     }
 
@@ -46,7 +48,7 @@ function TripSheet() {
         } catch (e) {
             toast.error(e.message);
         }
-    },[selectedDate]);
+    },[startDate, endDate]);
 
 
     return <>
@@ -54,11 +56,17 @@ function TripSheet() {
             <div className="col-1 back-page cell" onClick={() => navigate("/report")}>
                 <FaArrowLeft/>
             </div>
-            <div className="col-6 cell topic">
-                <span>Trip Report</span>
+            <div className="col-3 cell topic">
+                <span>Vehicle Owner Sheet</span>
             </div>
-            <div className="col-4 cell">
-                <DatePickr selectedDate={selectedDate} setSelectedDate={setSelectedDate}
+            <div className="col-3 cell multi-Date-picker">
+                <span>From: </span>
+                <DatePickr selectedDate={startDate} setSelectedDate={setStartDate}
+                           canShowBtn={CAN_SHOW_FR_BCK_BTN}/>
+            </div>
+            <div className="col-3 cell  multi-Date-picker">
+                <span>To: </span>
+                <DatePickr selectedDate={endDate} setSelectedDate={setEndDate}
                            canShowBtn={CAN_SHOW_FR_BCK_BTN}/>
             </div>
         </div>
@@ -71,18 +79,7 @@ function TripSheet() {
         <div className={'main-content col-11'}>
             <MUITable row={tripList.data} id={'tripId'} column={COLUMN_LIST}/>
         </div>
-        <div className="trip-sheet-footer">
-            {FOOTER_LIST.map((footer, index) => (
-                <div key={index} className={"container"}>
-                    {footer.icon}
-                    <span>{footer.title}</span>
-                    <div className="value">
-                        {footer.valuePath.length ? footer.valuePath : footer.defaultValue}
-                    </div>
-                </div>
-            ))}
-        </div>
     </>;
 }
 
-export default TripSheet;
+export default VehicleOwnerSheet;
