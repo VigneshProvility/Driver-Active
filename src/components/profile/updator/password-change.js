@@ -142,7 +142,7 @@ export default function PasswordChange(props) {
                 </div>
             ))}
 
-            <div className="row mt-4">
+            <div className="row mt-4 button">
                 <div className="col-12 text-center">
                     <button type="submit" className="btn btn-primary update-btn" disabled={!isValid}>
                         Update
@@ -151,7 +151,7 @@ export default function PasswordChange(props) {
                 <div className="col-12 text-center">
                     <button
                         type="button"
-                        className="btn btn-primary update-btn cancel-btn"
+                        className="btn btn-primary cancel-btn"
                         onClick={closePasswordPage}>
                         Cancel
                     </button>

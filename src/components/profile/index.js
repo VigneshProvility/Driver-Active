@@ -1,32 +1,29 @@
 import React, {useState} from "react";
 
-import {convertDateFormat} from "../../util/common";
-import Account from './sections/account';
-import License from './sections/license';
-import Suspension from './sections/suspension';
 import {getProfileInfo} from "../../services/profile";
 import PasswordChange from "./updator/password-change";
-
-function getValueByPath (obj, configInfo) {
-    const {valuePath, type, format} = configInfo;
-    const value = valuePath?.replace(/\[(\d+)\]/g, '.$1').split('.').reduce((acc, part) => acc?.[part], obj);
-    if ( type === 'date' && value) return convertDateFormat(value, format);
-    return value;
-}
+import AddressChange from "./updator/address-change";
+import ProfileSection from "./profile-section";
+import PhoneNumberChange from "./updator/phone-number-change";
 
 export default function Profile() {
-    const [canShowNewTabs, setCanShowNewTabs] = useState({canShowPasswordChangeTab: false});
-    const profileInfo = getProfileInfo()
+    const [canShowNewTabs, setCanShowNewTabs] = useState({
+        canShowPasswordChangeTab: false,
+        canShowAddressChangeTab: false
+    });
+    const profileInfo = getProfileInfo();
 
     function renderProfileContainer() {
         if (canShowNewTabs.canShowPasswordChangeTab) {
             return <PasswordChange setCanShowNewTabs={setCanShowNewTabs} />;
         }
-        return <>
-            <Account profile={profileInfo} getValueByPath={getValueByPath} setCanShowNewTabs={setCanShowNewTabs}/>
-            <License profile={profileInfo} getValueByPath={getValueByPath}/>
-            <Suspension/>
-        </>;
+        if(canShowNewTabs.canShowAddressChangeTab) {
+            return <AddressChange setCanShowNewTabs={setCanShowNewTabs} address={profileInfo.attributes.address.formattedAddress} />
+        }
+        if(canShowNewTabs.canShowPhoneChangeTab) {
+            return <PhoneNumberChange setCanShowNewTabs={setCanShowNewTabs} number={profileInfo.attributes.phone2.number} />
+        }
+        return <ProfileSection setCanShowNewTabs={setCanShowNewTabs} profileInfo={profileInfo} />
     }
     return renderProfileContainer();
 }

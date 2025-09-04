@@ -1,27 +1,27 @@
 import React, {useState} from "react";
 import ConfirmDialog from "../../popup";
 import {toast} from "react-toastify";
-import {updateAddressForDriver} from "../../../services/profile";
+import {updatePhoneForDriver} from "../../../services/profile";
 
-export default function AddressChange(props) {
-    const [address, setAddress] = React.useState(props.address);
+export default function PhoneNumberChange(props) {
+    const [address, setAddress] = React.useState(props.number);
     const [openPopup, setOpenPopup] = useState(false);
 
     function closeAddressPage() {
         props.setCanShowNewTabs((prev) => ({
             ...prev,
-            canShowAddressChangeTab: !prev["canShowAddressChangeTab"],
+            canShowPhoneChangeTab: !prev["canShowPhoneChangeTab"],
         }))
     }
 
     const handleConfirm = async () => {
         try {
-            await updateAddressForDriver(address);
+            await updatePhoneForDriver(address);
             setOpenPopup(false);
-            toast.success("Address changed successfully");
+            toast.success("Phone Number changed successfully");
             closeAddressPage();
         } catch (error) {
-            toast.error(`Error while trying to change the address, ${error.message}`);
+            toast.error(`Error while trying to change the number, ${error.message}`);
         }
     };
 
@@ -33,12 +33,12 @@ export default function AddressChange(props) {
             className="address-update-container"
         >
             <div className="row profile-header">
-                <span>Address</span>
-                <span className="address-description">Keep your address up-to-date</span>
+                <span>Phone</span>
+                <span className="address-description">Verify phone number to use</span>
             </div>
             <div className="row mt-4">
                 <div className="col-12 address-group">
-                    <label className="ml-4 address-sub-header"> Home Address<span className="text-danger">*</span>
+                    <label className="ml-4 address-sub-header">Phone<span className="text-danger">*</span>
                     </label>
                 </div>
                 <div className="col-12 address-group position-relative">
