@@ -43,14 +43,16 @@ const ACCOUNT_LIST = [
         rowClass: 'row mt-4 profile-content',
         columnClass: 'profile-value profile-description',
         valuePath: 'attributes.phone2.number',
-        canShowBtn: true
+        canShowBtn: true,
+        changeType: 'canShowPhoneChangeTab'// means shows another view
     },
     {
         title: 'Address',
         rowClass: 'row mt-4 profile-content',
         columnClass: 'profile-value profile-description',
         valuePath: 'attributes.address.formattedAddress',
-        canShowBtn: true
+        canShowBtn: true,
+        changeType: 'canShowAddressChangeTab'
     },
     {
         title: 'Company Rating',

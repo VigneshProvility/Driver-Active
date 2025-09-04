@@ -24,3 +24,8 @@ export const postApi = async (url, payload, addDriverId, customizeHeader) => {
     const response = await axios.post(url, payload, {headers : customizeHeader ? customizeHeader : headerInfo(addDriverId)});
     return response.data;
 }
+
+export const putApi = async (url, payload, addDriverId) => {
+    const response = await axios.put(url, payload, {headers : headerInfo(addDriverId)});
+    return response.data;
+}
