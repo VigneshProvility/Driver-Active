@@ -31,8 +31,7 @@ function SidebarMenu(props) {
         navigate(menuInfo.link);
     }
 
-    return (
-        <>
+    return <>
             <aside className={`sidebar ${!isCollapsed ? "collapsed" : ""}`}>
                 {/* Top */}
                 <div className="sidebar__top">
@@ -77,8 +76,7 @@ function SidebarMenu(props) {
                     <div className="sidebar__version">{!isCollapsed ? '3.7.4' : 'Version 3.7.4'}</div>
                 </div>
             </aside>
-        </>
-    );
+        </>;
 }
 
 export default SidebarMenu;

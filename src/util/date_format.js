@@ -1,1 +1,2 @@
  export const MONTH_DATE_YEAR_FORMAT = 'MMM D, YYYY';
+ export const YEAR_MONTH_DATE_TIME_FORMAT = 'YYYY-MM-DDTHH:mm:ss';
