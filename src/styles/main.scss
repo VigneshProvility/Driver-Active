@@ -1,3 +1,6 @@
+@use 'components/common/mixin'; // uses for create a common mixin to used by styles
+@use 'components/common/color';
+
 @import './variables';
 @import './mixins.scss';
 @import "~bootstrap/scss/bootstrap";

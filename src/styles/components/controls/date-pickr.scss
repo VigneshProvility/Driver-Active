@@ -1,4 +1,6 @@
-$white-color: #FFFFFF;
+@import "src/styles/components/common/color";
+@import "src/styles/components/common/mixin";
+
 $default-size: 3em;
 
 .date-picker {
@@ -8,16 +10,14 @@ $default-size: 3em;
   gap: 1rem;
   .date-arrow {
     width: 1.6em;
-    border-radius: 50%;
-    border: 0;
+    @include borderLayout(50%, 0);
     svg {
       width: 0.6em;
     }
   }
   /* Increase overall popup size */
   .react-datepicker {
-    font-size: 1rem;
-    font-weight: 400;
+    @include fontLayout(1rem, 400);
   }
 
   /* Bigger day cells */
@@ -53,15 +53,14 @@ $default-size: 3em;
   }
   .react-datepicker__header {
     border-bottom: 0;
-    background-color: $white-color;
+    background-color: $white;
     padding: 0;
   }
   .react-datepicker__day:not([aria-disabled=true]):hover {
     border-radius: $default-size;
   }
   .react-datepicker__day--keyboard-selected {
-    background-color: #569ff7;
-    color: $white-color;
+    @include backgroundLayout(#569ff7, $white);
   }
   .react-datepicker__input-container input {
     height: 2.3em;
@@ -73,9 +72,8 @@ $default-size: 3em;
 @media screen and (max-width: 765px) {
   .date-picker {
     .react-datepicker__input-container input {
-      height: 1.4em;
+      @include widthHeightLayout(10em, 1.4em);
       font-size: 1.6rem;
-      width: 10em;
     }
   }
 

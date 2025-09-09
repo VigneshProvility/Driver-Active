@@ -1,35 +1,17 @@
-$light-green: #21a423;
-$white: #FFFFFF;
-$light-white: #e5e5e5;
+@import "common/mixin";
+@import "common/color";
+
 $border-bottom: 1px solid $light-white;
 
 @mixin container() {
-  background: #ffffff;
+  @include backgroundLayout($white, black);
   border-bottom: $border-bottom;
-  color: black;
   padding: 1em 1em 0 1em;
   margin: 1.5em 5em 0 0.5em;
   border-radius: 0.8em;
 }
 @mixin headerProfile() {
-  font-weight: 700;
-  font-size: 1.5em;
-}
-@mixin fontLayout($size, $weight) {
-  font-weight: $weight;
-  font-size: $size;
-}
-@mixin backgroundLayout($background-color, $color) {
-  background:  $background-color;
-  color: $color;
-}
-@mixin widthHeightLayout($width, $height) {
-  width: $width;
-  height: $height;
-}
-@mixin borderLayout($border-radius, $border) {
-  border-radius: $border-radius;
-  border: $border;
+  @include fontLayout(1.5em, 700);
 }
 @mixin buttonLayout($border, $background-color, $color) {
   align-content: center;
@@ -43,8 +25,8 @@ $border-bottom: 1px solid $light-white;
 .profile-container {
   @include container;
   .profile-header {
-    border-bottom: $border-bottom;
     @include headerProfile;
+    border-bottom: $border-bottom;
   }
   .profile-content {
     font-style: normal;

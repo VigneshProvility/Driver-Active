@@ -1,3 +1,5 @@
+@import "common/mixin";
+
 .dashboard {
   display: flex;
   height: 100vh;
@@ -8,8 +10,7 @@
 // SIDEBAR
 .sidebar {
   width: 170px;
-  background-color: #21a423; // Green
-  color: #fff;
+  @include backgroundLayout(#21a423, #ffff);
   display: flex;
   flex-direction: column;
   transition: width 0.4s ease-in-out;
@@ -34,14 +35,12 @@
     padding: 1rem;
 
     .sidebar__logo {
-      font-size: 1.2rem;
-      font-weight: bold;
+      @include fontLayout(1.2em, bold);
     }
 
     .sidebar__collapse-btn {
-      background: none;
+      @include backgroundLayout(none, white);
       border: none;
-      color: white;
       font-size: 1rem;
       cursor: pointer;
     }
@@ -97,8 +96,7 @@
   }
 
   .sidebar__nav .active {
-    background-color: #FFFFFF;
-    color: green;
+    @include backgroundLayout(#FFFFFF, green);
   }
 }
 
@@ -135,4 +133,3 @@
     }
   }
 }
-
