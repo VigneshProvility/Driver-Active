@@ -7,9 +7,8 @@ import {toast} from "react-toastify";
 import MUITable from "../../controls/mui-table";
 import DatePickr from "../../controls/date-pickr";
 import {downloadCSV} from "../../../util/file-download";
-import {getApi} from "../../../util/fetch-api";
-import {COLUMN_LIST} from "../../../services/trip-sheet";
-import {convertDateFormat} from "../../../util/common";
+import {COLUMN_LIST, fetchVehicleOwnerList} from "../../../services/vehicle-owner-sheet";
+import {getUserInfoForReport} from "../../../services/trip-sheet";
 
 const CAN_SHOW_FR_BCK_BTN = {
     forward: false,
@@ -33,17 +32,9 @@ function VehicleOwnerSheet() {
     const navigate = useNavigate();
 
 
-    function fetchTripList() {
-        const startDates = convertDateFormat(startDate,'YYYY-MM-DDTHH:mm:ss');
-        const endDates = convertDateFormat(endDate,'YYYY-MM-DDTHH:mm:ss');
-        const url = `https://eumbrdevcloud.ddswireless.net/dpapi/driver/464/route-query?startTime=${startDates}&endTime=${endDates}`;
-        return getApi(url, false);
-    }
-
-
     useEffect(() => {
         try {
-            const tripData = fetchTripList();
+            const tripData = fetchVehicleOwnerList(startDate, endDate);
             setTripList(tripData);
         } catch (e) {
             toast.error(e.message);
@@ -71,9 +62,7 @@ function VehicleOwnerSheet() {
             </div>
         </div>
         <div className="trip-sheet col-11">
-            <span>TAMPERE</span>
-            <span>VICKY</span>
-            <span>123</span>
+            {getUserInfoForReport().map(values => <span>{values}</span>)}
             <span className="show-pointer" onClick={() => downloadTripSheet(tripList)}><FaDownload/></span>
         </div>
         <div className={'main-content col-11'}>

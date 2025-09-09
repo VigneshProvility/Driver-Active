@@ -1,43 +1,60 @@
-import React, {createContext, useCallback, useContext, useEffect, useState} from 'react';
-import { jwtDecode } from 'jwt-decode';
-import {setUserCrendIntoLocalStorage} from "../services/local-storage";
+import React, {
+    createContext,
+    useCallback,
+    useContext,
+    useEffect,
+    useState,
+} from "react";
+import { jwtDecode } from "jwt-decode";
+import { setUserCrendIntoLocalStorage } from "../services/local-storage";
+import { useSelector } from "react-redux";
 
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
+    const auth = useSelector((state) => state.auth);
 
     const login = (userInfo) => {
         setUserCrendIntoLocalStorage(userInfo);
         setUser(userInfo);
     };
 
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     const logout = useCallback(() => {
         setUser(null);
-    });
+        localStorage.removeItem("user"); // optional cleanup
+    }, []);
 
     const isTokenExpired = (token) => {
         try {
-            const decoded = jwtDecode(token.token);
+            const decoded = jwtDecode(token);
             const now = Date.now() / 1000;
-            return decoded.exp > now;
+            return now > decoded.exp; // ✅ expired if exp < now
         } catch (err) {
-            return true;
+            return true; // treat invalid token as expired
         }
     };
 
     useEffect(() => {
-        const token = JSON.parse(localStorage.getItem('userCredentials'));
-        if (token && !isTokenExpired(token.token)) {
-            setUser(token.token);
+        const token = auth?.auth?.token; // assuming auth.auth is the raw JWT string
+        if (token && !isTokenExpired(token)) {
+            setUser(token);
         } else {
             logout();
         }
-    }, []);
+    }, [auth, logout]);
 
     return (
-        <AuthContext.Provider value={{ user, login, logout, isAuthenticated: !!isTokenExpired(user) }}>
+        <AuthContext.Provider
+            value={{
+                user,
+                login,
+                logout,
+                isAuthenticated: !!user && !isTokenExpired(auth.auth.token),
+                isTokenExpired,
+                auth
+            }}
+        >
             {children}
         </AuthContext.Provider>
     );

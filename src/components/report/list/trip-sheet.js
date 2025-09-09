@@ -7,8 +7,7 @@ import {toast} from "react-toastify";
 import MUITable from "../../controls/mui-table";
 import DatePickr from "../../controls/date-pickr";
 import {downloadCSV} from "../../../util/file-download";
-import {getApi} from "../../../util/fetch-api";
-import {COLUMN_LIST, FOOTER_LIST} from "../../../services/trip-sheet";
+import {COLUMN_LIST, fetchTripList, FOOTER_LIST, getUserInfoForReport} from "../../../services/trip-sheet";
 
 const CAN_SHOW_FR_BCK_BTN = {
     forward: true,
@@ -30,18 +29,9 @@ function TripSheet() {
     const [tripList, setTripList] = useState([]);
     const navigate = useNavigate();
 
-
-    function fetchTripList() {
-        const startDate = moment().format('YYYY-MM-DDTHH:mm:ss');
-        const endDate = moment(selectedDate).add(1, 'days').format('YYYY-MM-DDTHH:mm:ss');
-        const url = `https://eumbrdevcloud.ddswireless.net/dpapi/driver/464/route-query?startTime=${startDate}&endTime=${endDate}`;
-        return getApi(url, false);
-    }
-
-
     useEffect(() => {
         try {
-            const tripData = fetchTripList();
+            const tripData = fetchTripList(selectedDate);
             setTripList(tripData);
         } catch (e) {
             toast.error(e.message);
@@ -63,9 +53,7 @@ function TripSheet() {
             </div>
         </div>
         <div className="trip-sheet col-11">
-            <span>TAMPERE</span>
-            <span>VICKY</span>
-            <span>123</span>
+            {getUserInfoForReport().map(values => <span>{values}</span>)}
             <span className="show-pointer" onClick={() => downloadTripSheet(tripList)}><FaDownload/></span>
         </div>
         <div className={'main-content col-11'}>
