@@ -1,15 +1,16 @@
+@import "common/mixin";
+@import "common/color";
+
 @mixin report() {
-  background: #ffffff;
-  border-bottom: 1px solid #e5e5e5;
-  color: black;
+  @include backgroundLayout(#ffffff, black);
+  border-bottom: 1px solid $light-white;
 }
 
 .report-header {
   @include report;
+  @include fontLayout(2em, 700);
   display: flex;
   padding: 2rem;
-  font-weight: 700;
-  font-size: 2em;
 
   .back-page {
     cursor: pointer;
@@ -36,11 +37,10 @@
   }
 
   .title {
+    @include  fontLayout(18px, 700);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 18px;
-    font-weight: 700;
     padding: 1em 1.5em;
     border-bottom: 1px solid #e5e5e5;
 

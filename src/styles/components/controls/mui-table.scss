@@ -1,9 +1,10 @@
+@import "src/styles/components/common/color";
+
 $background-color: #303E44;
-$font-color: #FFFFFF;
 
 .MuiDataGrid-mainContent {
   .MuiDataGrid-topContainer {
-    color: $font-color;
+    color: $white;
 
     .MuiDataGrid-columnHeaders {
       .MuiDataGrid-filler {
@@ -14,7 +15,7 @@ $font-color: #FFFFFF;
     .MuiDataGrid-columnHeaders {
       .MuiDataGrid-row--borderBottom {
         .MuiDataGrid-columnHeader--sortable {
-          background: $font-color;
+          background: $white;
         }
 
         .MuiDataGrid-columnHeader {
@@ -32,7 +33,7 @@ $font-color: #FFFFFF;
           }
 
           .MuiSvgIcon-root {
-            color: $font-color;
+            color: $white;
           }
         }
       }
@@ -41,5 +42,5 @@ $font-color: #FFFFFF;
 }
 
 .MuiDataGrid-row:nth-of-type(even) {
-  background-color: #f5f5f5
+  background-color: #f5f5f5;
 }

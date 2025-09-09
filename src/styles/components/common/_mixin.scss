@@ -1,0 +1,19 @@
+@mixin fontLayout($size, $weight) {
+  font-weight: $weight;
+  font-size: $size;
+}
+
+@mixin backgroundLayout($background-color, $color) {
+  background:  $background-color;
+  color: $color;
+}
+
+@mixin widthHeightLayout($width, $height) {
+  width: $width;
+  height: $height;
+}
+
+@mixin borderLayout($border-radius, $border) {
+  border-radius: $border-radius;
+  border: $border;
+}
