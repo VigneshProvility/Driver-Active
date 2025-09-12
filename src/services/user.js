@@ -15,3 +15,5 @@ export const updatePassword = async (payload) => {
         throw error.message;
     }
 }
+
+export const login = async (payload) => {}

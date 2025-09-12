@@ -6,7 +6,7 @@ import {getDriverId} from "../services/profile";
 
 function headerInfo (addDriverId=true) {
     const userInfo = getUserCrendIntoLocalStorage();
-    const driverId = getDriverId();
+    const driverId = addDriverId && getDriverId();
     return {
             "Content-Type": "application/json",
             Authorization: `Bearer ${userInfo.token}`,

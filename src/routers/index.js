@@ -20,6 +20,7 @@ import Report from "../components/report";
 import TripReport from "../components/report/list/trip-sheet";
 import VehicleOwnerSheet from "../components/report/list/vehicle-owner-sheet";
 import Profile from "../components/profile";
+import Notification from "../components/notification";
 
 import '../language-selection';
 
@@ -60,6 +61,7 @@ function Routers() {
                                 <Route path="trip-sheet-report" element={<TripReport />} />
                                 <Route path="vehicle-owner-sheet-report" element={<VehicleOwnerSheet />} />
                                 <Route path="profile" element={<Profile />} />
+                                <Route path="notification" element={<Notification />} />
                             </Route>
                         </Routes>
                     </Router>
