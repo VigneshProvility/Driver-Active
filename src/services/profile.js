@@ -40,6 +40,11 @@ export const getDriverEmail = () => {
     return driver.attributes.email;
 }
 
+export const getDriverLicense = () => {
+    const driver = getProfileInfo();
+    return driver.attributes.licenses;
+}
+
 /**
  * @param {String} address
  */

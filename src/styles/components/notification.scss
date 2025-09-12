@@ -1,0 +1,45 @@
+@import "common/mixin";
+@import "common/color";
+
+$border-bottom: 1px solid $light-white;
+
+@mixin container($background-color, $padding) {
+  @include backgroundLayout($background-color, black);
+  border-bottom: $border-bottom;
+  padding: $padding;
+  margin: 1.5em 5em 0 0.5em;
+}
+
+.notification-header {
+  @include container(rgb(235, 238, 242), 1.5em 1em 1em 1em);
+  .warning-container {
+    @include fontLayout(1.2em, 500);
+    background: $white;
+    padding: 1em;
+  }
+}
+
+.notification-content {
+  @include container($white, 1em 1em 15em);
+  line-height: 3em;
+  .notification-value {
+    @include fontLayout(1.1em, 600);
+    font-style: normal;
+    border-bottom: 1px solid #e5e5e5;
+    line-height: 3em;
+    align-items: center;
+    color: rgb(84, 93, 105);;
+  }
+  .warning {
+    color: #FFA400;
+  }
+}
+
+@media(max-width: 765px) {
+  .notification-header {
+    margin: 1.5em 1em 0 0.5em;
+  }
+  .notification-content {
+    margin: 1.5em 1em 0 0.5em;
+  }
+}

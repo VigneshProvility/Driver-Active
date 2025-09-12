@@ -62,12 +62,8 @@
         padding: 4px 8px;
         border-radius: 15px;
         font-size: 0.9rem;
-
-        .star-icon {
-          color: #facc15;
-        }
-        .star-icon.empty {
-          color: #e0e0e0;
+        .rating-star {
+          font-size: 14px;
         }
       }
       .datetime-box {
@@ -91,9 +87,6 @@
         font-size: 25px;
         color: #030014;
       }
-    }
-    .header-center {
-      margin-left: 3em;
     }
   }
   .custom-header .header-center .logo-text {
