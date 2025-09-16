@@ -1,0 +1,65 @@
+@import "src/styles/components/common/mixin";
+@import "src/styles/components/common/color";
+
+
+@mixin drop-down-layout() {
+  display: flex;
+  align-items: center;
+
+  img {
+    @include widthHeightLayout(22px, 22px);
+    margin-right: 8px;
+  }
+
+  span {
+    font-weight: 700;
+  }
+}
+
+.dropdown-wrapper {
+  width: 300px;
+  font-family: Arial, sans-serif;
+}
+
+// Dropdown input box
+.my-select__control {
+  border: 2px solid $lang-green;
+  background-color: rgb(0, 145, 0) !important;
+  border-radius: 8px;
+  padding: 4px;
+  box-shadow: none;
+  color: $white !important;
+  font-weight: 700;
+  &:hover {
+    border-color: $lang-green;
+  }
+  .my-select__value-container{
+    .my-select__single-value {
+      color: $white;
+    }
+  }
+}
+
+// Placeholder text
+.my-select__placeholder {
+  color: #888;
+  font-size: 14px;
+}
+
+// Selected value (in textbox)
+.dropdown-single-value {
+  @include drop-down-layout();
+}
+
+// Dropdown options (default state)
+.dropdown-option {
+  @include drop-down-layout();
+}
+
+.my-select__option {
+  @include backgroundLayout($white !important, black !important)
+}
+
+.my-select__option--is-focused {
+  @include backgroundLayout($lang-green !important, $white !important);
+}

@@ -6,16 +6,17 @@ import {
 } from "react-icons/fa";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Tooltip } from "react-tooltip";
-import Select from "react-select";
-
+import {useTranslation} from "react-i18next";
 
 import { MENU_LIST } from "../../util/menu-list";
 import { useAuth } from "../../contexts/auth-context";
+import LanguageSelection from "../controls/language-drop-down";
 
 function SidebarMenu({ isCollapsed, collapseMenu, notifyExpiry }) {
     const navigate = useNavigate();
     const location = useLocation();
     const { logout } = useAuth();
+    const {t } = useTranslation();
 
     const getActiveMenu = (pathname) => {
         const path = pathname.toLowerCase();
@@ -43,7 +44,7 @@ function SidebarMenu({ isCollapsed, collapseMenu, notifyExpiry }) {
             {/* Top */}
             <div className="sidebar__top">
                 <h2 className="sidebar__logo">
-                    {isCollapsed && "Driver Portal"}
+                    {isCollapsed && t ("driver portal")}
                 </h2>
                 <button
                     className="sidebar__collapse-btn"
@@ -60,7 +61,7 @@ function SidebarMenu({ isCollapsed, collapseMenu, notifyExpiry }) {
                         <li
                             key={item.title}
                             data-tooltip-id={`menu-tooltip-${item.title}`}
-                            data-tooltip-content={item.title}
+                            data-tooltip-content={t (item.title)}
                             className={
                                 activeMenu?.toLowerCase() === item.title.toLowerCase()
                                     ? "active"
@@ -70,8 +71,8 @@ function SidebarMenu({ isCollapsed, collapseMenu, notifyExpiry }) {
                         >
                             {item.icon}
                             {item.title.includes('Notification') && notifyExpiry > 0 ? <span className={"alert-notification"}></span> : null}
-                            <span className={!isCollapsed ? 'sidebar-title' : ''}>{item.title}</span>
-                            <Tooltip id={`menu-tooltip-${item.title}`} place="right"/>
+                            <span className={!isCollapsed ? 'sidebar-title' : ''}>{t (item.title)}</span>
+                            <Tooltip id={`menu-tooltip-${(item.title)}`} place="right"/>
                         </li>
                     ))}
                 </ul>
@@ -80,20 +81,18 @@ function SidebarMenu({ isCollapsed, collapseMenu, notifyExpiry }) {
             {/* Bottom */}
             <div className="sidebar__bottom">
                 <div className="sidebar__lang">
-                    {isCollapsed && <div>
-                        <Select
-                            placeholder="Select a fruit"
-                        />
-                    </div>}
+                     <div className={'col-12'}>
+                        <LanguageSelection  isCollapsed={isCollapsed}/>
+                    </div>
                 </div>
                 <div
                     data-tooltip-id="sign-out"
-                    data-tooltip-content="Sign Out"
+                    data-tooltip-content={t ("logout")}
                     className="sidebar__logout"
                     onClick={logout}
                 >
-                    <FaPowerOff />
-                    {isCollapsed && <span>Sign Out</span>}
+                    <FaPowerOff className={'m-3'} />
+                    {isCollapsed && <span>{t ('logout')}</span>}
                     <Tooltip id="sign-out" place="right" />
                 </div>
                 <div className="sidebar__version">

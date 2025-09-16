@@ -7,6 +7,7 @@ import ConfirmDialog from "../../popup";
 import {updatePassword} from "../../../services/user";
 import {getDriverEmail} from "../../../services/profile";
 import {toast} from "react-toastify";
+import {useTranslation} from "react-i18next";
 
 // Validation schema (keys match PASSWORD_LIST)
 const schema = yup.object().shape({
@@ -28,19 +29,19 @@ const PASSWORD_LIST = [
         id: "current-password",
         title: "Current Password",
         valuePath: "currentPassword",
-        placeHolder: "Current Password",
+        placeHolder: "Enter Current Password",
     },
     {
         id: "new-password",
         title: "New Password",
         valuePath: "newPassword",
-        placeHolder: "New Password",
+        placeHolder: "Enter New Password",
     },
     {
         id: "confirm-password",
         title: "Confirm Password",
         valuePath: "confirmPassword",
-        placeHolder: "Confirm New Password",
+        placeHolder: "Enter Confirm New Password",
     },
 ];
 
@@ -52,6 +53,7 @@ export default function PasswordChange(props) {
     });
     const [openPopup, setOpenPopup] = useState(false);
     const [userData, setUserData] = useState(null);
+    const {t} = useTranslation();
 
     function closePasswordPage() {
         props.setCanShowNewTabs((prev) => ({
@@ -107,9 +109,9 @@ export default function PasswordChange(props) {
             onSubmit={handleSubmit(onSubmit)}
         >
             <div className="row profile-header">
-                <span>Password</span>
+                <span>{t ('Password')}</span>
                 <span className="password-description">
-          Use this password to sign on the portal
+          {t ('Use this password to sign on the portal')}
         </span>
             </div>
 
@@ -117,14 +119,14 @@ export default function PasswordChange(props) {
                 <div className="row mt-4" key={index}>
                     <div className="col-12 password-group">
                         <label className="ml-4 password-sub-header">
-                            {password.title} <span className="text-danger">*</span>
+                            {t (password.title)} <span className="text-danger">*</span>
                         </label>
                     </div>
                     <div className="col-12 password-group position-relative">
                         <input
                             className="password-field"
                             type={showPassword[password.valuePath] ? "text" : "password"}
-                            placeholder={password.placeHolder}
+                            placeholder={t (password.placeHolder)}
                             {...register(password.valuePath)}
                         />
                         <span
@@ -136,7 +138,7 @@ export default function PasswordChange(props) {
                     </div>
                     {errors[password.valuePath] && (
                         <p className="p-0 mb-0 text-danger small mt-1 ml-3 password-validation-error">
-                            {errors[password.valuePath].message}
+                            {t (errors[password.valuePath].message)}
                         </p>
                     )}
                 </div>
@@ -145,7 +147,7 @@ export default function PasswordChange(props) {
             <div className="row mt-4 button">
                 <div className="col-12 text-center">
                     <button type="submit" className="btn btn-primary update-btn" disabled={!isValid}>
-                        Update
+                        {t ('Update')}
                     </button>
                 </div>
                 <div className="col-12 text-center">
@@ -153,14 +155,14 @@ export default function PasswordChange(props) {
                         type="button"
                         className="btn btn-primary cancel-btn"
                         onClick={closePasswordPage}>
-                        Cancel
+                        {t ('Cancel')}
                     </button>
                 </div>
             </div>
             <ConfirmDialog
                 open={openPopup}
-                title="Confirm Action"
-                message="Do you want to commit changes?"
+                title={t ("Confirm Action")}
+                message={t ("Do you want to commit changes?")}
                 onConfirm={handleConfirm}
                 onCancel={handleCancel}
             />

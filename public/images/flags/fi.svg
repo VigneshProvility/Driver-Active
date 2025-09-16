@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="23px" height="14px" viewBox="0 0 23 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 58 (84663) - https://sketch.com -->
+    <title>Finnland-flag</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="23" height="14" rx="1.60000002"></rect>
+    </defs>
+    <g id="TB-Cloud-V2" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="1.-attribute---language-dropdown" transform="translate(-1112.000000, -93.000000)">
+            <g id="Finnland-flag" transform="translate(1112.000000, 93.000000)">
+                <mask id="mask-2" fill="white">
+                    <use xlink:href="#path-1"></use>
+                </mask>
+                <rect stroke="#E1E2E6" stroke-width="0.5" x="0.25" y="0.25" width="22.5" height="13.5" rx="1.60000002"></rect>
+                <polygon id="Rectangle-2" fill="#0848A6" mask="url(#mask-2)" points="-1 8.41176471 6.91304348 8.41176471 6.91304348 15 10.3043478 15 10.3043478 8.41176471 25 8.41176471 25 5.58823529 10.3043478 5.58823529 10.3043478 -1 6.91304348 -1 6.91304348 5.58823529 -1 5.58823529"></polygon>
+            </g>
+        </g>
+    </g>
+</svg>

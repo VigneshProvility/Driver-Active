@@ -7,50 +7,51 @@ import {getCompanyId, getProfileInfo} from "./profile";
 export const COLUMN_LIST = [
     {
         field: 'date',
-        headerName: 'Date',
+        headerName: 'date',
         width: 150,
     },
     {
         field: 'passengerId',
-        headerName: 'Passenger ID',
+        headerName: 'passenger id',
         width: 150,
     },
     {
         field: 'driverNumber',
-        headerName: 'Driver Number',
+        headerName: 'driver number',
         width: 150,
     },
     {
         field: 'tripType',
-        headerName: 'Trip Type',
+        headerName: 'trip type',
         width: 150,
     },
     {
         field: 'pickupText',
-        headerName: 'Departure Addr',
+        headerName: 'departure addr',
         width: 300,
     },
     {
         field: 'dropOffText',
-        headerName: 'Arrival Addr',
+        headerName: 'arrival addr',
         width: 300,
     },
     {
         field: 'requestedDeparture',
-        headerName: 'Requested Departure',
+        headerName: 'requested departure',
         width: 200,
     },
     {
         field: 'orderId',
-        headerName: 'Order',
+        headerName: 'order',
         width: 100,
     },
     {
         field: 'routeId',
-        headerName: 'Route',
+        headerName: 'route',
         width: 100,
     }
 ];
+
 
 /**
  * @param {Number} companyId

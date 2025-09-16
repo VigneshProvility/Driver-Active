@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="23px" height="14px" viewBox="0 0 23 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 58 (84663) - https://sketch.com -->
+    <title>Spain-flag</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="23" height="14" rx="1.5999999"></rect>
+    </defs>
+    <g id="TB-Cloud-V2" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="1.-attribute---language-dropdown" transform="translate(-1112.000000, -123.000000)">
+            <g id="Spain-flag" transform="translate(1112.000000, 123.000000)">
+                <mask id="mask-2" fill="white">
+                    <use xlink:href="#path-1"></use>
+                </mask>
+                <use id="Mask" fill="#FFFFFF" xlink:href="#path-1"></use>
+                <rect id="Rectangle-2" fill="#DD172C" mask="url(#mask-2)" x="0" y="0" width="23" height="4"></rect>
+                <rect id="Rectangle-2" fill="#DD172C" mask="url(#mask-2)" x="0" y="10" width="23" height="4"></rect>
+                <rect id="Rectangle-2" fill="#FFD133" mask="url(#mask-2)" x="0" y="3" width="23" height="7"></rect>
+                <polygon id="Rectangle-139-Copy" fill="#FFEDB1" mask="url(#mask-2)" points="6 6.76666668 7 6.76666668 7 7.23333332 6 7.23333332"></polygon>
+                <path d="M4.27014254,6.49516773 L4.4158848,7.9064728 C4.46323253,8.36496773 4.87146152,8.73333335 5.32618504,8.73333335 L5.67369253,8.73333335 C6.12462618,8.73333335 6.53722806,8.35932198 6.58399277,7.9064728 L6.72973503,6.49516773 C6.74302059,6.36651614 6.65041634,6.26666665 6.50931871,6.26666665 L4.49055886,6.26666665 C4.34966978,6.26666665 4.25683847,6.36633688 4.27014254,6.49516773 Z" id="Rectangle-137" stroke="#A41517" stroke-width="0.533333302" mask="url(#mask-2)"></path>
+                <polygon id="Rectangle-139" fill="#A41517" mask="url(#mask-2)" points="5 7 7 7 7 7.33333333 6.5 7.33333333 6 8 5.5 7.33333333 5 7.33333333"></polygon>
+                <rect id="Rectangle-135" fill="#A41517" mask="url(#mask-2)" x="3" y="6" width="1" height="3"></rect>
+                <rect id="Rectangle-135-Copy" fill="#A41517" mask="url(#mask-2)" x="7" y="6" width="1" height="3"></rect>
+                <path d="M5,5.5 C5,5.22385763 5.21403503,5 5.50468445,5 L6.49531555,5 C6.77404508,5 7,5.23193359 7,5.5 L7,5.72674561 C7,5.87765984 6.88088036,6 6.73853493,6 L5.26146507,6 C5.1170619,6 5,5.87738037 5,5.72674561 L5,5.5 Z" id="Rectangle-138" fill="#A41517" mask="url(#mask-2)"></path>
+            </g>
+        </g>
+    </g>
+</svg>

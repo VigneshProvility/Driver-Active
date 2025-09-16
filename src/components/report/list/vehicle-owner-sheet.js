@@ -9,6 +9,7 @@ import DatePickr from "../../controls/date-pickr";
 import {downloadCSV} from "../../../util/file-download";
 import {COLUMN_LIST, fetchVehicleOwnerList} from "../../../services/vehicle-owner-sheet";
 import {getUserInfoForReport} from "../../../services/trip-sheet";
+import {useTranslation} from "react-i18next";
 
 const CAN_SHOW_FR_BCK_BTN = {
     forward: false,
@@ -29,7 +30,10 @@ function VehicleOwnerSheet() {
     const [startDate, setStartDate] = useState(moment());
     const [endDate, setEndDate] = useState(moment());
     const [tripList, setTripList] = useState([]);
+    const [columnList, setColumnList] = useState([]);
+
     const navigate = useNavigate();
+    const {t, i18n} = useTranslation();
 
 
     useEffect(() => {
@@ -41,6 +45,15 @@ function VehicleOwnerSheet() {
         }
     },[startDate, endDate]);
 
+    // Translate column headers
+    useEffect(() => {
+        const translatedColumnList = COLUMN_LIST.map((column) => ({
+            ...column,
+            headerName: t(column.headerName)
+        }));
+        setColumnList(translatedColumnList);
+    }, [i18n, t]);
+
 
     return <>
         <div className="col-12 report-header">
@@ -48,15 +61,15 @@ function VehicleOwnerSheet() {
                 <FaArrowLeft/>
             </div>
             <div className="col-3 cell topic">
-                <span>Vehicle Owner Sheet</span>
+                <span>{t ("vehicle owner sheet")}</span>
             </div>
             <div className="col-3 cell multi-Date-picker">
-                <span>From: </span>
+                <span>{t ("from")}: </span>
                 <DatePickr selectedDate={startDate} setSelectedDate={setStartDate}
                            canShowBtn={CAN_SHOW_FR_BCK_BTN}/>
             </div>
             <div className="col-3 cell  multi-Date-picker">
-                <span>To: </span>
+                <span>{t ("to")}: </span>
                 <DatePickr selectedDate={endDate} setSelectedDate={setEndDate}
                            canShowBtn={CAN_SHOW_FR_BCK_BTN}/>
             </div>
@@ -66,7 +79,7 @@ function VehicleOwnerSheet() {
             <span className="show-pointer" onClick={() => downloadTripSheet(tripList)}><FaDownload/></span>
         </div>
         <div className={'main-content col-11'}>
-            <MUITable row={tripList.data} id={'tripId'} column={COLUMN_LIST}/>
+            <MUITable row={tripList.data} id={'tripId'} column={columnList}/>
         </div>
     </>;
 }

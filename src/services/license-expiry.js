@@ -1,5 +1,6 @@
 import {getDriverLicense} from "./profile";
 import moment from "moment";
+import {getTranslatedValue} from "./language-selection";
 
 const NOTIFICATION_DAY_LIMIT = 10;
 const WARNING = 'warning';
@@ -40,21 +41,21 @@ function getNotificationInfo(message, type) {
 }
 
 function prepareNotificationMessage(message, daysCount) {
-    const DAYS = 'days';
+    const DAYS = getTranslatedValue('days');
     if (!canShowNotificationMessage(daysCount)) return;
     if (daysCount > 0) {
-        const formattedMsg = `${message} Expires in ${daysCount} ${DAYS}`;
+        const formattedMsg = `${getTranslatedValue(message)} ${getTranslatedValue('expires in')} ${daysCount} ${DAYS}`;
         return getNotificationInfo(formattedMsg, WARNING)
     }
-    const formattedMsg = `${message} Expired`;
+    const formattedMsg = `${getTranslatedValue(message)} ${getTranslatedValue('expired')}`;
     return getNotificationInfo(formattedMsg, EXPIRY);
 }
 
 export const driverExpiryList = () => {
     const driverExpiryDaysCount = getDriverExpiryDaysCount();
-    const licenseExpiryMsg = prepareNotificationMessage('Licence', driverExpiryDaysCount.driverExpiryDaysCount);
-    const driverLicenseExpiryMsg = prepareNotificationMessage('Driver Licence', driverExpiryDaysCount.driverLicenseExpiryDaysCount);
-    const taxiBadgeLicenseExpiryMsg = prepareNotificationMessage('Taxi Badge', driverExpiryDaysCount.driverBadgeExpiryDaysCount);
+    const licenseExpiryMsg = prepareNotificationMessage('licence', driverExpiryDaysCount.driverExpiryDaysCount);
+    const driverLicenseExpiryMsg = prepareNotificationMessage('driver licence', driverExpiryDaysCount.driverLicenseExpiryDaysCount);
+    const taxiBadgeLicenseExpiryMsg = prepareNotificationMessage('taxi badge', driverExpiryDaysCount.driverBadgeExpiryDaysCount);
     return [licenseExpiryMsg, driverLicenseExpiryMsg, taxiBadgeLicenseExpiryMsg];
 }
 
