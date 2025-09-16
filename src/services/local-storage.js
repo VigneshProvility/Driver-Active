@@ -6,3 +6,11 @@ export const setUserCrendIntoLocalStorage = (user) => {
 export const getUserCrendIntoLocalStorage = () => {
     return JSON.parse(localStorage.getItem('userCredentials'));
 }
+
+export const setLanguageToStorage = (language) => {
+    localStorage.setItem('language', language);
+}
+
+export const getLanguageFromLocalStorage = () => {
+    return localStorage.getItem('language');
+}

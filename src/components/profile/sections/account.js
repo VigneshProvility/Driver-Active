@@ -3,34 +3,35 @@ import {Rating} from "@mui/material";
 import React from "react";
 import {MUI_STAR_PRECISION_INFO} from "../../../util/common";
 import {getRatingInfo} from "../../../services/rating";
+import {useTranslation} from "react-i18next";
 
 const ACCOUNT_LIST = [
     {
-        title: 'Account',
+        title: 'account',
         rowClass: 'row profile-header',
         columnClass: 'mb-3',
         valuePath: ''
     },
     {
-        title: 'Full Name',
+        title: 'full name',
         rowClass: 'row mt-4 profile-content ',
         columnClass: 'profile-description',
         valuePath: 'attributes.name'
     },
     {
-        title: 'DriverId',
+        title: 'driverid',
         rowClass: 'row mt-4 profile-content',
         columnClass: 'profile-description',
         valuePath: 'attributes.badgeNr'
     },
     {
-        title: 'Email',
+        title: 'email',
         rowClass: 'row mt-4 profile-content',
         columnClass: 'profile-description',
         valuePath: 'attributes.email'
     },
     {
-        title: 'Password',
+        title: 'password',
         rowClass: 'row mt-4 profile-content',
         columnClass: 'profile-value profile-description',
         valuePath: '',
@@ -39,15 +40,15 @@ const ACCOUNT_LIST = [
         changeType: 'canShowPasswordChangeTab'
     },
     {
-        title: 'Phone',
+        title: 'phone',
         rowClass: 'row mt-4 profile-content',
         columnClass: 'profile-value profile-description',
         valuePath: 'attributes.phone2.number',
         canShowBtn: true,
-        changeType: 'canShowPhoneChangeTab'// means shows another view
+        changeType: 'canShowPhoneChangeTab'
     },
     {
-        title: 'Address',
+        title: 'address',
         rowClass: 'row mt-4 profile-content',
         columnClass: 'profile-value profile-description',
         valuePath: 'attributes.address.formattedAddress',
@@ -55,14 +56,14 @@ const ACCOUNT_LIST = [
         changeType: 'canShowAddressChangeTab'
     },
     {
-        title: 'Company Rating',
+        title: 'company rating',
         rowClass: 'row mt-4 profile-content',
         columnClass: '',
         valuePath: 'companyRating',
         canShowRating: true
     },
     {
-        title: 'Driver Rating',
+        title: 'driver rating',
         rowClass: 'row mt-4 profile-content',
         columnClass: '',
         valuePath: 'driverRating',
@@ -83,10 +84,11 @@ function openAnotherWindow(setCanShowNewTabs, header) {
 export default function Account(props) {
     const {getValueByPath, profile, setCanShowNewTabs} = props;
     const rating = getRatingInfo();
+    const {t} = useTranslation();
     return <div className="profile-container">
         {ACCOUNT_LIST.map((header, index) => {
             return <div className={header.rowClass} key={index}>
-                <div className="col-6 mb-3"><span>{header.title}</span></div>
+                <div className="col-6 mb-3"><span>{t (header.title)}</span></div>
                 <div className={`col-6 mb-3 ${header.columnClass}`}>
                     {header.valuePath && !header.canShowRating ? <span> {getValueByPath(profile, header)} </span>: ''}
                     {header.canShowPass ? <span>{[...Array(5)].map((_, index) => (
