@@ -5,7 +5,7 @@ import {getLanguageFromLocalStorage, setLanguageToStorage} from "../../../servic
 import {LANGUAGE_INFO_LIST} from "../../../services/language-selection";
 
 // Custom option (used in dropdown list)
-const CustomOption = (props) => (
+const customOption = (props) => (
     <components.Option {...props}>
         <div className="dropdown-option">
             <img src={props.data.flagUrl} alt={props.data.label} />
@@ -15,7 +15,7 @@ const CustomOption = (props) => (
 );
 
 // Custom selected value (shows in the box)
-const CustomSingleValue = (props) => (
+const customSingleValue = (props) => (
     <components.SingleValue {...props}>
         <div className="dropdown-single-value">
             <img src={props.data.flagUrl} alt={props.data.label} />
@@ -24,7 +24,7 @@ const CustomSingleValue = (props) => (
     </components.SingleValue>
 );
 
-const CustomDropdownIndicator = (props) => {
+const customDropdownIndicator = (props) => {
     const { collapse } = props.selectProps;
     if (!collapse) return null; // hide arrow when collapsed
     return <components.DropdownIndicator {...props} />;
@@ -52,7 +52,7 @@ export default function LanguageSelection(props) {
     return <Select
         value={selectedLang}
         options={LANGUAGE_INFO_LIST}
-        components={{ Option: CustomOption, SingleValue: CustomSingleValue, DropdownIndicator: CustomDropdownIndicator }}
+        components={{ Option: customOption, SingleValue: customSingleValue, DropdownIndicator: customDropdownIndicator }}
         classNamePrefix="my-select"
         onChange={handleSelectLang}
         collapse={props.isCollapsed}
